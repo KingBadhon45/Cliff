@@ -118,7 +118,7 @@ const defaultStderrClearLine = process.stderr.clearLine;
 function convertTime(miliSeconds, replaceSeconds = "s", replaceMinutes = "m", replaceHours = "h", replaceDays = "d", replaceMonths = "M", replaceYears = "y", notShowZero = false) {
 	if (typeof replaceSeconds == 'boolean') {
 		notShowZero = replaceSeconds;
-		replaceSeconds = "s";
+		replaceSeconds = "m";
 	}
 	const second = Math.floor(miliSeconds / 1000 % 60);
 	const minute = Math.floor(miliSeconds / 1000 / 60 % 60);
@@ -143,8 +143,8 @@ function convertTime(miliSeconds, replaceSeconds = "s", replaceMinutes = "m", re
 			formattedDate += datePart.value + datePart.replace;
 		else if (formattedDate != '')
 			formattedDate += '00' + datePart.replace;
-		else if (i == dateParts.length - 1)
-			formattedDate += '0' + datePart.replace;
+		else if (i == dateParts.length - 4)
+			formattedDate += '24' + datePart.replace;
 	}
 
 	if (formattedDate == '')
